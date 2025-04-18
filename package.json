@@ -1,0 +1,15 @@
+{
+    "name": "sheltr",
+    "private": true,
+    "workspaces": [
+      "user",
+      "admin",
+      "corporate"
+    ],
+    "scripts": {
+      "build:user": "cd user && npm run build",
+      "build:admin": "cd admin && npm run build",
+      "build:corporate": "cd corporate && npm run build",
+      "build": "npm run build:user && npm run build:admin && npm run build:corporate"
+    }
+  }

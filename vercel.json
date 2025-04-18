@@ -1,0 +1,9 @@
+{
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "rewrites": [
+      { "source": "/admin/:path*", "destination": "/admin/:path*" },
+      { "source": "/corporate/:path*", "destination": "/corporate/:path*" },
+      { "source": "/:path*", "destination": "/user/:path*" }
+    ]
+  }
