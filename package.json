@@ -15,7 +15,6 @@
       "build:user": "cd user && npm run build",
       "build:admin": "cd admin && npm run build",
       "build:corporate": "cd corporate && npm run build",
-      "postbuild": "mkdir -p dist/user dist/admin dist/corporate && cp -r user/dist/* dist/user/ && cp -r admin/dist/* dist/admin/ && cp -r corporate/dist/* dist/corporate/",
-      "build": "npm run build:user && npm run build:admin && npm run build:corporate && npm run postbuild"
+      "build": "rm -rf dist && mkdir -p dist && npm run build:user && npm run build:admin && npm run build:corporate && cp -r user/dist/* dist/user/ && cp -r admin/dist/* dist/admin/ && cp -r corporate/dist/* dist/corporate/"
     }
   }
