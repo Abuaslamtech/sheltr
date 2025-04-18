@@ -9,12 +9,12 @@
     "scripts": {
       "install:all": "npm install && npm run install:workspaces",
       "install:workspaces": "npm run install:user && npm run install:admin && npm run install:corporate",
-      "install:user": "cd user && npm install",
+      "install:user": "cd user && npm install ",
       "install:admin": "cd admin && npm install",
       "install:corporate": "cd corporate && npm install",
-      "build:user": "cd user && npm run build",
-      "build:admin": "cd admin && npm install && npm run build",
-      "build:corporate": "cd corporate && npm install && npm run build",
+      "build:user": "cd user && npm run build -- --outDir ../dist/user",
+      "build:admin": "cd admin && npm run build -- --outDir ../dist/admin",
+      "build:corporate": "cd corporate && npm run build -- --outDir ../dist/corporate",
       "build": "npm run build:user && npm run build:admin && npm run build:corporate"
     }
   }
