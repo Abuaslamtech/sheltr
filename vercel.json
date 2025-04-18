@@ -1,12 +1,12 @@
 {
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist",
-    "trailingSlash": true,
-    "rewrites": [
-      { "source": "/admin", "destination": "/admin/" },
-      { "source": "/admin/:path*", "destination": "/admin/:path*" },
-      { "source": "/corporate", "destination": "/corporate/" },
-      { "source": "/corporate/:path*", "destination": "/corporate/:path*" },
-      { "source": "/:path*", "destination": "/user/:path*" }
-    ]
-  }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/:path*", "destination": "/admin/index.html" },
+    { "source": "/corporate", "destination": "/corporate/index.html" },
+    { "source": "/corporate/:path*", "destination": "/corporate/index.html" },
+    { "source": "/:path*", "destination": "/user/index.html" }
+  ]
+}
