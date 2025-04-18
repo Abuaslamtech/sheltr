@@ -1,8 +1,11 @@
 {
-    "buildCommand": "npm install && npm run build",
+    "buildCommand": "npm run build",
     "outputDirectory": "dist",
+    "trailingSlash": true,
     "rewrites": [
+      { "source": "/admin", "destination": "/admin/" },
       { "source": "/admin/:path*", "destination": "/admin/:path*" },
+      { "source": "/corporate", "destination": "/corporate/" },
       { "source": "/corporate/:path*", "destination": "/corporate/:path*" },
       { "source": "/:path*", "destination": "/user/:path*" }
     ]

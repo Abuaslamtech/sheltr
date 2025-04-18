@@ -24,8 +24,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes basename="/admin">
+      <BrowserRouter basename="/admin">
+        <Routes >
           <Route path="/" element={<Index />} />
           
           {/* Admin Routes */}
