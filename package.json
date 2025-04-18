@@ -7,9 +7,14 @@
       "corporate"
     ],
     "scripts": {
+      "install:all": "npm install && npm run install:workspaces",
+      "install:workspaces": "npm run install:user && npm run install:admin && npm run install:corporate",
+      "install:user": "cd user && npm install",
+      "install:admin": "cd admin && npm install",
+      "install:corporate": "cd corporate && npm install",
       "build:user": "cd user && npm run build",
-      "build:admin": "cd admin && npm run build",
-      "build:corporate": "cd corporate && npm run build",
+      "build:admin": "cd admin && npm install && npm run build",
+      "build:corporate": "cd corporate && npm install && npm run build",
       "build": "npm run build:user && npm run build:admin && npm run build:corporate"
     }
   }
