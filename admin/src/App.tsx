@@ -25,8 +25,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter basename="/admin">
-        <Routes >
-          <Route path="/" element={<Index />} />
+        <Routes path="/" element={<Index />}>
           
           {/* Admin Routes */}
          <Route element={<AdminLayout />}>
