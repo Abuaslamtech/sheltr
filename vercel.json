@@ -5,20 +5,19 @@
     {
       "src": "user/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "user/dist" }
+      "config": { "distDir": "dist" }
     },
     {
       "src": "admin/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "admin/dist" }
+      "config": { "distDir": "dist" }
     },
     {
       "src": "corporate/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "corporate/dist" }
+      "config": { "distDir": "dist" }
     }
   ],
-
   "routes": [
     { "src": "/admin/(.*)", "dest": "/admin/index.html" },
     { "src": "/admin", "dest": "/admin/index.html" },
