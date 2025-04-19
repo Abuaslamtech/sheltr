@@ -3,10 +3,13 @@
     "outputDirectory": "dist",
     "trailingSlash": true,
     "routes": [
-      { "src": "/admin", "dest": "/admin/index.html" },
-      { "src": "/admin/(.*)", "dest": "/admin/index.html" },
-      { "src": "/corporate", "dest": "/corporate/index.html" },
-      { "src": "/corporate/(.*)", "dest": "/corporate/index.html" },
-      { "src": "/(.*)", "dest": "/user/$1" }
+      { "handle": "filesystem" },
+      { "src": "^/admin/?$", "dest": "/admin/index.html" },
+      { "src": "^/admin/(.*)", "dest": "/admin/index.html" },
+      { "src": "^/corporate/?$", "dest": "/corporate/index.html" },
+      { "src": "^/corporate/(.*)", "dest": "/corporate/index.html" },
+      { "src": "^/user/?$", "dest": "/user/index.html" },
+      { "src": "^/user/(.*)", "dest": "/user/index.html" },
+      { "src": "^/$", "dest": "/index.html" }
     ]
   }
