@@ -15,6 +15,6 @@
     "build:user": "cd user && npm run build",
     "build:admin": "cd admin && npm run build",
     "build:corporate": "cd corporate && npm run build",
-    "build": "rm -rf dist && mkdir -p dist/user dist/admin dist/corporate && npm run build:user && npm run build:admin && npm run build:corporate && cp -r user/dist/* dist/user/ && cp -r admin/dist/* dist/admin/ && cp -r corporate/dist/* dist/corporate/ && cp landing-page.html dist/index.html"
+    "build": "npm run install:workspaces && rm -rf dist && mkdir -p dist/user dist/admin dist/corporate && npm run build:user && npm run build:admin && npm run build:corporate && cp -r user/dist/* dist/user/ && cp -r admin/dist/* dist/admin/ && cp -r corporate/dist/* dist/corporate/ && cp landing-page.html dist/index.html"
   }
 }
