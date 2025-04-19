@@ -1,15 +1,14 @@
 {
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist",
-    "trailingSlash": true,
-    "routes": [
-      { "handle": "filesystem" },
-      { "src": "^/admin/?$", "dest": "/admin/index.html" },
-      { "src": "^/admin/(.*)", "dest": "/admin/index.html" },
-      { "src": "^/corporate/?$", "dest": "/corporate/index.html" },
-      { "src": "^/corporate/(.*)", "dest": "/corporate/index.html" },
-      { "src": "^/user/?$", "dest": "/user/index.html" },
-      { "src": "^/user/(.*)", "dest": "/user/index.html" },
-      { "src": "^/$", "dest": "/index.html" }
-    ]
-  }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "^/admin/?$", "dest": "/admin/index.html" },
+    { "src": "^/admin/(.*)", "dest": "/admin/index.html" },
+    { "src": "^/corporate/?$", "dest": "/corporate/index.html" },
+    { "src": "^/corporate/(.*)", "dest": "/corporate/index.html" },
+    { "src": "^/user/?$", "dest": "/user/index.html" },
+    { "src": "^/user/(.*)", "dest": "/user/index.html" },
+    { "src": "^/$", "dest": "/index.html" }
+  ]
+}
