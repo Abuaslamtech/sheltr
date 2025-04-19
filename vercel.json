@@ -1,29 +1,12 @@
 {
-  "version": 2,
-
-  "builds": [
-    {
-      "src": "user/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
-    },
-    {
-      "src": "admin/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
-    },
-    {
-      "src": "corporate/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
-    }
-  ],
-  "routes": [
-    { "src": "/admin/(.*)", "dest": "/admin/index.html" },
-    { "src": "/admin", "dest": "/admin/index.html" },
-    { "src": "/corporate/(.*)", "dest": "/corporate/index.html" },
-    { "src": "/corporate", "dest": "/corporate/index.html" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/user/index.html" }
-  ]
-}
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "trailingSlash": true,
+    "rewrites": [
+      { "source": "/admin", "destination": "/admin/index.html" },
+      { "source": "/admin/(.*)", "destination": "/admin/index.html" },
+      { "source": "/corporate", "destination": "/corporate/index.html" },
+      { "source": "/corporate/(.*)", "destination": "/corporate/index.html" },
+      { "source": "/(.*)", "destination": "/user/index.html" }
+    ]
+  }
