@@ -3,171 +3,448 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sheltr - Select Application</title>
+  <title>Sheltr - Choose Your Portal</title>
   <style>
     :root {
       --primary: #3b82f6;
-      --primary-hover: #2563eb;
+      --primary-light: #dbeafe;
+      --primary-dark: #1d4ed8;
       --background: #f8fafc;
       --card-bg: #ffffff;
-      --text: #1e293b;
-      --text-secondary: #64748b;
+      --text: #0f172a;
+      --text-secondary: #475569;
       --border: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
     }
-
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       background-color: var(--background);
-      margin: 0;
-      padding: 0;
       color: var(--text);
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      background-image: linear-gradient(135deg, #f0f7ff 0%, #f8fafc 100%);
     }
-
+    
     .container {
-      max-width: 800px;
-      padding: 2rem;
+      max-width: 1200px;
+      width: 100%;
+      padding: 1.5rem;
     }
-
+    
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .logo svg {
+      margin-right: 0.75rem;
+    }
+    
     h1 {
       font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--text);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
     }
-
-    p {
+    
+    .subtitle {
+      font-size: 1.25rem;
       color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
       line-height: 1.6;
     }
-
-    .app-grid {
+    
+    .portal-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
-
-    .app-card {
+    
+    .portal-card {
       background-color: var(--card-bg);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
       transition: all 0.3s ease;
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--text);
+      position: relative;
       display: flex;
       flex-direction: column;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      height: 100%;
+    }
+    
+    .portal-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-color: var(--primary-light);
+    }
+    
+    .card-header {
+      padding: 1.5rem;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      border-bottom: 1px solid var(--border);
     }
-
-    .app-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1rem;
+    
+    .card-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--primary);
-      color: white;
+      min-width: 50px;
+      height: 50px;
+      background-color: var(--primary-light);
+      color: var(--primary);
       border-radius: 12px;
-      font-size: 1.5rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
     }
-
-    .app-card h3 {
+    
+    .user-icon { background-color: #dbeafe; color: #2563eb; }
+    .corporate-icon { background-color: #e0f2fe; color: #0284c7; }
+    .admin-icon { background-color: #f0fdf4; color: #16a34a; }
+    
+    .card-title {
       font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      color: var(--text);
     }
-
-    .app-card p {
-      font-size: 0.9rem;
-      margin-bottom: 0;
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
     }
-
-    .logo {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--primary);
+    
+    .card-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    
+    .feature-list {
+      list-style-type: none;
+      margin-bottom: 1.25rem;
+    }
+    
+    .feature-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
     }
-
-    .logo span {
+    
+    .feature-item svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 0.5rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+    
+    .card-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .access-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.6rem 1.25rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .access-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .access-btn svg {
       margin-left: 0.5rem;
     }
-
+    
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    
+    .badge-user { background-color: #dbeafe; color: #1e40af; }
+    .badge-corporate { background-color: #e0f2fe; color: #0369a1; }
+    .badge-admin { background-color: #ecfdf5; color: #065f46; }
+    
+    /* Enhanced Responsive Styles */
+    @media (max-width: 1024px) {
+      .portal-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+    
     @media (max-width: 768px) {
       .container {
-        padding: 1.5rem;
+        padding: 1rem;
       }
+      
+      .header {
+        margin-bottom: 2rem;
+      }
+      
       h1 {
         font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+      }
+      
+      .portal-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      
+      .card-header {
+        padding: 1.25rem;
+      }
+      
+      .card-body, .card-footer {
+        padding: 1.25rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 0.5rem;
+      }
+      
+      .container {
+        padding: 0.75rem;
+      }
+      
+      .logo {
+        font-size: 1.75rem;
+      }
+      
+      h1 {
+        font-size: 1.75rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .card-icon {
+        min-width: 40px;
+        height: 40px;
+      }
+      
+      .card-title {
+        font-size: 1.1rem;
+      }
+      
+      .card-description {
+        font-size: 0.9rem;
+      }
+      
+      .feature-item {
+        font-size: 0.9rem;
+      }
+      
+      .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .access-btn {
+        width: 100%;
+        justify-content: center;
+        order: 2;
+      }
+      
+      .badge {
+        order: 1;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-      </svg>
-      <span>Sheltr</span>
+    <div class="header">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span>Sheltr</span>
+      </div>
+      <h1>Select Your Portal</h1>
+      <p class="subtitle">Access Sheltr's platform based on your role and responsibilities. Choose the appropriate portal below to get started.</p>
     </div>
     
-    <h1>Select Your Application</h1>
-    <p>Welcome to Sheltr! Choose the application you want to access below.</p>
-    
-    <div class="app-grid">
-      <a href="/user/" class="app-card">
-        <div class="icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
+    <div class="portal-grid">
+      <!-- User Portal Card -->
+      <a href="https://usersheltr.vercel.app/" class="portal-card">
+        <div class="card-header">
+          <div class="card-icon user-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h2 class="card-title">User Portal</h2>
         </div>
-        <h3>User Portal</h3>
-        <p>Access your properties, marketplace, and personal profile</p>
+        <div class="card-body">
+          <p class="card-description">Your personal access to manage properties, explore marketplace listings, and customize your Sheltr experience.</p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Property management
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Marketplace listings
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Account settings
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <span class="badge badge-user">Residents</span>
+          <span class="access-btn">
+            Access Portal
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
       </a>
       
-      <a href="/corporate/" class="app-card">
-        <div class="icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-          </svg>
+      <!-- Corporate Portal Card -->
+      <a href="https://corporatesheltr.vercel.app/" class="portal-card">
+        <div class="card-header">
+          <div class="card-icon corporate-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <h2 class="card-title">Corporate Portal</h2>
         </div>
-        <h3>Corporate Portal</h3>
-        <p>Property management, analytics, and business tools</p>
+        <div class="card-body">
+          <p class="card-description">Comprehensive tools for property managers and business users to oversee operations and analyze performance.</p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Property portfolio management
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Analytics dashboard
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Business tools
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <span class="badge badge-corporate">Property Managers</span>
+          <span class="access-btn">
+            Access Portal
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
       </a>
       
-      <a href="/admin/" class="app-card">
-        <div class="icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 20h9"></path>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-          </svg>
+      <!-- Admin Portal Card -->
+      <a href="https://adminsheltr.vercel.app/" class="portal-card">
+        <div class="card-header">
+          <div class="card-icon admin-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </div>
+          <h2 class="card-title">Admin Dashboard</h2>
         </div>
-        <h3>Admin Dashboard</h3>
-        <p>System administration, user management, and settings</p>
+        <div class="card-body">
+          <p class="card-description">Advanced system administration tools for platform management, user control, and global settings.</p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              System administration
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              User management
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Global settings
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <span class="badge badge-admin">Administrators</span>
+          <span class="access-btn">
+            Access Portal
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </div>
       </a>
     </div>
   </div>
