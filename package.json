@@ -1,20 +1,8 @@
 {
-  "name": "sheltr",
-  "private": true,
-  "workspaces": [
-    "user",
-    "admin",
-    "corporate"
-  ],
-  "scripts": {
-    "install:all": "npm install && npm run install:workspaces",
-    "install:workspaces": "npm run install:user && npm run install:admin && npm run install:corporate",
-    "install:user": "cd user && npm install",
-    "install:admin": "cd admin && npm install",
-    "install:corporate": "cd corporate && npm install",
-    "build:user": "cd user && npm run build",
-    "build:admin": "cd admin && npm run build",
-    "build:corporate": "cd corporate && npm run build",
-    "build": "npm run install:workspaces && rm -rf dist && mkdir -p dist/user dist/admin dist/corporate && npm run build:user && npm run build:admin && npm run build:corporate && cp -r user/dist/* dist/user/ && cp -r admin/dist/* dist/admin/ && cp -r corporate/dist/* dist/corporate/ && cp landing-page.html dist/index.html"
+    "name": "sheltr-landing",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "build": "mkdir -p dist && cp index.html dist/"
+    }
   }
-}
