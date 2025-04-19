@@ -2,11 +2,11 @@
     "buildCommand": "npm run build",
     "outputDirectory": "dist",
     "trailingSlash": true,
-    "rewrites": [
-      { "source": "/admin", "destination": "/admin/index.html" },
-      { "source": "/admin/(.*)", "destination": "/admin/index.html" },
-      { "source": "/corporate", "destination": "/corporate/index.html" },
-      { "source": "/corporate/(.*)", "destination": "/corporate/index.html" },
-      { "source": "/(.*)", "destination": "/user/index.html" }
+    "routes": [
+      { "src": "/admin", "dest": "/admin/index.html" },
+      { "src": "/admin/(.*)", "dest": "/admin/index.html" },
+      { "src": "/corporate", "dest": "/corporate/index.html" },
+      { "src": "/corporate/(.*)", "dest": "/corporate/index.html" },
+      { "src": "/(.*)", "dest": "/user/$1" }
     ]
   }
